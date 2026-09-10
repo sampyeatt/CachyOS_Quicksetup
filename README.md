@@ -28,7 +28,7 @@ machine back up to what the repo says it should be".
 | `scripts/NN-*.sh` | One stage each. Numbered, run in order. |
 | `packages/*.txt` | What to install. One package per line, `#` comments fine. |
 | `packages/aur.txt` | Same, but installed via `paru`/`yay`. |
-| `packages/optional/` | **Ignored.** Park a list here to disable it. |
+| `packages/optional/` | Ignored by the installer. Create it and park a list there to disable it. |
 | `dotfiles/` | Mirrors `$HOME`. Contents get symlinked in. |
 | `services/*.txt` | systemd units to `enable --now`. |
 | `lib/common.sh` | Logging and shared helpers. |
@@ -38,12 +38,24 @@ machine back up to what the repo says it should be".
 Put its name in the right file under `packages/`. That's the whole workflow —
 no code changes. Repo packages go in any `*.txt`; AUR packages go in `aur.txt`.
 
+The lists deliberately contain **only what CachyOS does not already give you**,
+derived from the installer's `netinstall.yaml` and the live ISO package list
+plus their full dependency closures. Don't re-add stock packages — a fresh
+install already has them.
+
 To find what you've installed since the last sync:
 
 ```sh
 comm -23 <(pacman -Qqe | sort -u) \
-         <(cat packages/*.txt packages/optional/*.txt \
+         <(cat packages/*.txt \
            | sed -e 's/#.*//' | tr -d ' ' | grep -v '^$' | sort -u)
+```
+
+Cross-check a candidate against the stock set before adding it:
+
+```sh
+curl -s https://raw.githubusercontent.com/CachyOS/calamares-config/master/etc/calamares/modules/netinstall.yaml \
+  | grep -qx '      - PKGNAME' && echo 'ships by default, skip it'
 ```
 
 ## Adding dotfiles
@@ -73,9 +85,6 @@ automatically; source `lib/common.sh` at the top for the helpers.
 
 ## Notes
 
-- `packages/optional/distro-defaults.txt` is the kernel/bootloader/firmware/
-  filesystem set that the CachyOS installer already gives you. It's a record,
-  not something to reinstall.
 - `gaming.txt` assumes AMD (`lib32-vulkan-radeon`). Swap for
   `lib32-nvidia-utils` on NVIDIA.
 - Virtualisation needs a manual step the scripts don't do for you:

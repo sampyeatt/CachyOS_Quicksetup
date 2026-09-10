@@ -1,0 +1,7 @@
+# Command-line tools CachyOS does not ship.
+dos2unix
+man-db
+man-pages
+plocate
+s-nail
+zip

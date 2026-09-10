@@ -1,0 +1,6 @@
+# Audio plugins and codecs on top of the stock pipewire stack.
+gst-plugin-va
+ladspa
+lsp-plugins
+phonon-qt6-vlc
+swh-plugins

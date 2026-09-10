@@ -1,8 +1,10 @@
-# Gaming. The cachyos-gaming-* metapackages pull in wine, proton, gamemode etc.
+# Gaming. Not part of a default install -- you picked these at setup time.
 cachyos-gaming-applications
 cachyos-gaming-meta
-lib32-mesa
-lib32-opencl-mesa
-lib32-vulkan-radeon    # AMD -- swap for lib32-nvidia-utils on NVIDIA
 prismlauncher
 steam
+
+# AMD. Swap for lib32-nvidia-utils on NVIDIA.
+lib32-mesa
+lib32-opencl-mesa
+lib32-vulkan-radeon

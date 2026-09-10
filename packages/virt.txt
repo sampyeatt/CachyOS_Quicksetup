@@ -1,6 +1,5 @@
-# Virtualisation. Remember to add yourself to the libvirt group:
-#   sudo usermod -aG libvirt $USER
-dnsmasq
+# Virtualisation. Needs a manual step afterwards:
+#   sudo usermod -aG libvirt $USER   (then log out and back in)
 gnome-boxes
 libvirt-dbus
 qemu-full
