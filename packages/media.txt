@@ -4,3 +4,7 @@ ladspa
 lsp-plugins
 phonon-qt6-vlc
 swh-plugins
+
+# CachyOS ships easyeffects, but .bin/switchAudio.sh depends on it,
+# so list it explicitly rather than relying on the distro default.
+easyeffects

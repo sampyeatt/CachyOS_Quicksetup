@@ -79,13 +79,42 @@ Stage 40 symlinks them. Anything real already in the way is moved to
 | `30-packages` | Installs everything in `packages/`. |
 | `40-dotfiles` | Symlinks `dotfiles/` into `$HOME`. |
 | `50-services` | Enables the units in `services/`. |
+| `60-kde-shortcuts` | Re-binds KDE global shortcuts for the `~/.bin` scripts. |
 
 Add a stage by dropping a numbered script into `scripts/`. It gets picked up
 automatically; source `lib/common.sh` at the top for the helpers.
+
+## Audio switching
+
+`dotfiles/.bin/` carries two scripts, and the setup reproduces everything they
+need to actually run:
+
+| File | Purpose |
+|---|---|
+| `.bin/switchAudio.sh` | Toggles the default sink between the Focusrite Scarlett Solo and the SteelSeries Arctis Nova Pro, loading the matching EasyEffects preset. |
+| `.bin/setAudioLevels.sh` | Sets the Scarlett as default and nudges its volume. Runs at login. |
+| `.local/share/easyeffects/output/{Eris3-5,NovaPro}.json` | The presets `switchAudio.sh` loads. Without these it switches sinks but the EQ silently fails. |
+| `.config/autostart/setAudioLevels.sh.desktop` | Runs `setAudioLevels.sh` at login. |
+| `.local/share/applications/net.local.switchAudio.sh.desktop` | Hidden launcher that exists purely to give the shortcut something to bind to. |
+
+The key binding itself (`Launch (5)`) lives in `kglobalshortcutsrc` next to every
+other KDE shortcut, so it can't be symlinked without clobbering the rest —
+stage 60 sets just that one key with `kwriteconfig6`.
+
+`easyeffects` is listed in `packages/media.txt` even though CachyOS ships it,
+because `switchAudio.sh` breaks without it and the distro's default set is not a
+promise.
 
 ## Notes
 
 - `gaming.txt` assumes AMD (`lib32-vulkan-radeon`). Swap for
   `lib32-nvidia-utils` on NVIDIA.
+- The two `.desktop` files hardcode `/home/sam/.bin/...`. If the username on the
+  new machine differs, fix those two `Exec=` lines.
+- `~/.bin` is not on `$PATH`. Nothing needs it to be — both scripts are launched
+  by absolute path — but you can't type their names in a shell as-is.
+- The sink names in both scripts are specific to that Focusrite and SteelSeries
+  hardware. On different gear, get the new names from `pactl list short sinks`.
+- KDE only reloads shortcuts on login, so stage 60's binding needs a re-login.
 - Virtualisation needs a manual step the scripts don't do for you:
   `sudo usermod -aG libvirt $USER`, then log out and back in.

@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=/home/sam/.bin/switchAudio.sh
+Name=switchAudio
+NoDisplay=true
+StartupNotify=false
+Type=Application
+X-KDE-GlobalAccel-CommandShortcut=true
