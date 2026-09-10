@@ -1,0 +1,9 @@
+# Virtualisation. Remember to add yourself to the libvirt group:
+#   sudo usermod -aG libvirt $USER
+dnsmasq
+gnome-boxes
+libvirt-dbus
+qemu-full
+swtpm
+virt-manager
+virt-viewer

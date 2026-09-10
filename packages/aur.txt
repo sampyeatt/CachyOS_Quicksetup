@@ -1,0 +1,10 @@
+# AUR packages. Installed with paru/yay after the repo packages.
+ProjectTracker
+alsaequal
+bambustudio-appimage
+filebot
+jetbrains-toolbox
+librewolf-bin
+vesktop
+windscribe
+zoom

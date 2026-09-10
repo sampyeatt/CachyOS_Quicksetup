@@ -1,0 +1,12 @@
+# Development toolchains and tools.
+android-tools
+arduino-language-server
+bun
+dbeaver
+meld
+npm
+python
+python-setuptools
+putty
+qmk
+rustup

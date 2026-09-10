@@ -1,0 +1,6 @@
+# System units to enable --now. Anything not installed is skipped with a warning.
+bluetooth.service
+ufw.service
+avahi-daemon.service
+libvirtd.socket
+fstrim.timer

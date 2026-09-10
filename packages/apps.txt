@@ -1,0 +1,15 @@
+# Graphical applications.
+bitwarden
+chromium
+discord
+firefox
+freecad
+haruna
+libreoffice-fresh
+proton-vpn-cli
+proton-vpn-gtk-app
+qbittorrent
+rpi-imager
+spotify-launcher
+vlc-plugins-all
+zen-browser-bin
