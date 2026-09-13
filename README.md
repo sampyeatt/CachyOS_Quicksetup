@@ -68,7 +68,9 @@ dotfiles/.config/alacritty/foo.toml    ->  ~/.config/alacritty/foo.toml
 ```
 
 Stage 40 symlinks them. Anything real already in the way is moved to
-`~/.dotfiles-backup/<timestamp>/` first, never deleted.
+`~/.dotfiles-backup/<timestamp>/` first, never deleted. `.idea/` directories
+are skipped, so JetBrains project files can live alongside a config without
+being linked into `$HOME`.
 
 ## Stages
 
@@ -105,7 +107,33 @@ stage 60 sets just that one key with `kwriteconfig6`.
 because `switchAudio.sh` breaks without it and the distro's default set is not a
 promise.
 
+## Hyprland
+
+The Lua config is in `dotfiles/.config/hypr/` and gets linked to
+`~/.config/hypr/` like any other dotfile. `packages/hyprland.txt` holds the
+compositor plus everything the config launches that isn't already listed
+elsewhere:
+
+| Package | Used by |
+|---|---|
+| `hyprland`, `xdg-desktop-portal-hyprland` | The session itself; the portal handles screen sharing. |
+| `noctalia` | Bar, launcher, notifications, window switcher. Started in `autostart.lua`, driven by `SUPER+Space`, `SUPER+,`, `ALT+Tab`. |
+| `awww` | Wallpaper daemon, started in `autostart.lua`. |
+| `hyprlauncher` | The `launcher` variable in `keybinds.lua`. |
+| `playerctl` | Media keys. |
+| `rose-pine-hyprcursor` (AUR) | `HYPRCURSOR_THEME`. |
+
+Everything else it calls — `alacritty`, `dolphin`, `easyeffects`, `protonvpn`,
+`zen-browser`, `spotify-launcher`, `steam`, `webstorm` — is either stock or
+already in another list.
+
+Pick Hyprland from the session menu at the SDDM login screen.
+
 ## Notes
+
+- `monitors.lua` names outputs `DP-1`/`DP-2`/`DP-3` with this desk's layout.
+  On other hardware, get the names from `hyprctl monitors` and fix it, or
+  Hyprland will fall back to auto-placing everything.
 
 - `gaming.txt` assumes AMD (`lib32-vulkan-radeon`). Swap for
   `lib32-nvidia-utils` on NVIDIA.

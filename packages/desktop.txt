@@ -2,7 +2,6 @@
 ffmpegthumbs
 filelight
 gwenview
-hyprland
 kdegraphics-thumbnailers
 kdeplasma-addons
 kio-admin

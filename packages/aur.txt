@@ -1,4 +1,5 @@
 # AUR packages. Installed with paru/yay after the repo packages.
 bambustudio-appimage
 jetbrains-toolbox
+rose-pine-hyprcursor   # HYPRCURSOR_THEME in hypr/hyprland.lua
 vesktop

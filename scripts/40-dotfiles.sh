@@ -11,7 +11,7 @@ src="$SETUP_ROOT/dotfiles"
 backup="$HOME/.dotfiles-backup/$(date +%Y%m%d-%H%M%S)"
 backed_up=0
 
-mapfile -t files < <(find "$src" -type f -not -name '.gitkeep' -printf '%P\n' | sort)
+mapfile -t files < <(find "$src" -type f -not -name '.gitkeep' -not -path '*/.idea/*' -printf '%P\n' | sort)
 
 if [[ ${#files[@]} -eq 0 ]]; then
     skip "dotfiles/ is empty -- nothing to link"

@@ -1,0 +1,15 @@
+# Hyprland session. Config lives in dotfiles/.config/hypr.
+hyprland
+xdg-desktop-portal-hyprland   # screen sharing, file pickers
+
+# Launched by the config.
+noctalia                      # bar/launcher/notifications, started in autostart.lua
+awww                          # wallpaper daemon, started in autostart.lua
+hyprlauncher                  # `launcher` in keybinds.lua/programs.lua
+playerctl                     # media keys in keybinds.lua
+
+# Already covered elsewhere, listed there:
+#   alacritty (stock), dolphin (stock KDE), easyeffects (media.txt),
+#   proton-vpn-cli / zen-browser-bin / spotify-launcher (apps.txt),
+#   steam (gaming.txt), webstorm (via jetbrains-toolbox, aur.txt),
+#   rose-pine-hyprcursor (aur.txt)

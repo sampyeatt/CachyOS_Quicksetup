@@ -21,7 +21,7 @@ require("autostart")
 -------------------------------
 
 hl.env("HYPRCURSOR_SIZE", "35")
-hl.env("HYPRCURSOR_THEME", "rose-pine-cursor-hyprcursor_0.3.2")
+hl.env("HYPRCURSOR_THEME", "rose-pine-hyprcursor")
 
 
 -----------------------
