@@ -1,0 +1,6 @@
+hl.on("hyprland.start", function ()
+	hl.exec_cmd("noctalia")
+	hl.exec_cmd("awww-daemon")
+	hl.exec_cmd("protonvpn connect")
+	hl.exec_cmd("easyeffects -w --service-mode")
+end)
