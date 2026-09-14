@@ -1,8 +1,0 @@
-# Virtualisation. Needs a manual step afterwards:
-#   sudo usermod -aG libvirt $USER   (then log out and back in)
-gnome-boxes
-libvirt-dbus
-qemu-full
-swtpm
-virt-manager
-virt-viewer

@@ -3,10 +3,10 @@ hyprland
 xdg-desktop-portal-hyprland   # screen sharing, file pickers
 
 # Launched by the config.
-noctalia                      # bar/launcher/notifications, started in autostart.lua
 awww                          # wallpaper daemon, started in autostart.lua
 hyprlauncher                  # `launcher` in keybinds.lua/programs.lua
 playerctl                     # media keys in keybinds.lua
+ashell                        # status bar in keybinds.lua
 
 # Already covered elsewhere, listed there:
 #   alacritty (stock), dolphin (stock KDE), easyeffects (media.txt),

@@ -9,7 +9,7 @@ set -euo pipefail
 source "$SETUP_ROOT/lib/common.sh"
 
 repo_pkgs=()
-for list in "$SETUP_ROOT"/packages/*.txt; do
+for list in "$SETUP_ROOT"/paqckages/*.txt; do
     [[ -e $list ]] || continue
     [[ $(basename "$list") == aur.txt ]] && continue
     mapfile -t -O "${#repo_pkgs[@]}" repo_pkgs < <(read_list "$list")

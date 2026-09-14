@@ -1,13 +1,6 @@
 # Desktop bits beyond the stock CachyOS KDE session, plus fonts.
 ffmpegthumbs
-filelight
-gwenview
 kdegraphics-thumbnailers
-kdeplasma-addons
-kio-admin
-kwalletmanager
-kwallet-pam
-plymouth-kcm
 
 awesome-terminal-fonts
 ttf-meslo-nerd
