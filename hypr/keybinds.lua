@@ -2,19 +2,21 @@
 ---- KEYBINDINGS ----
 ---------------------
 
-local mainMod = "SUPER" -- Sets "Windows" key as main modifier
+local mainMod = "SUPER"
 
 local terminal    = "alacritty"
 local fileManager = "dolphin"
 local launcher = "hyprlauncher"
-
--- Example binds, see https://wiki.hypr.land/Configuring/Basics/Binds/ for more
 
 -- Apps
 hl.bind(mainMod .. " + Z", hl.dsp.exec_cmd("zen-browser"))
 hl.bind(mainMod .. " + S", hl.dsp.exec_cmd("spotify-launcher"))
 hl.bind(mainMod .. " + W", hl.dsp.exec_cmd("webstorm"))
 hl.bind(mainMod .. " + G", hl.dsp.exec_cmd("steam"))
+hl.bind(mainMod .. " + D", hl.dsp.exec_cmd("vesktop"))
+
+-- Macros
+hl.bind(mainMod .. " + F14", hl.dsp.exec_cmd("./.bin/switchAudio.sh"))
 
 local closeWindowBind = hl.bind(mainMod .. " + C", hl.dsp.window.close())
 -- closeWindowBind:set_enabled(false)
@@ -32,23 +34,7 @@ hl.bind(mainMod .. " + right", hl.dsp.focus({ direction = "right" }))
 hl.bind(mainMod .. " + up",    hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + down",  hl.dsp.focus({ direction = "down" }))
 
--- Noctalia Settings
-hl.window_rule({
-    match = { class = "dev.noctalia.Noctalia" },
-    float = true,
-    size = { 1080, 920 },
-})
 
-hl.layer_rule({
-    name = "noctalia",
-    match = {
-        namespace = "^noctalia-(bar-.+|notification|dock|panel|attached-panel|osd|window-switcher)$",
-    },
-    no_anim = true,
-    ignore_alpha = 0.5,
-    blur = true,
-    blur_popups = true,
-})
 
 -- Switch workspaces with mainMod + [0-9]
 -- Move active window to a workspace with mainMod + SHIFT + [0-9]
